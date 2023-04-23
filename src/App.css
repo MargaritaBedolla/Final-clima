@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.weather-list {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.weather-item {
+  display: inline-block;
+  margin-right: 10px;
+}

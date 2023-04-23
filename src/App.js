@@ -13,12 +13,10 @@ function App() {
       (usuario));
   }
 
-  //NUEVO METODO
-
   const [weatherData, setWeatherData] = useState([]);
 
   const getWeatherData = async () => {
-    const cities = ['Mexicali', 'Hermosillo', 'Culiacan', 'Mexicali', 'Sonora'];
+    const cities = ['Nogales', 'Cancún', 'Tokio', 'Canadá', 'Guadalajara'];
     const apiKey = '583bbfe23e0ea8f6d4b9d7f2c8efa77d'; 
     const units = 'metric';
     const promises = cities.map(async city => {
@@ -29,7 +27,7 @@ function App() {
     const data = await Promise.all(promises);
     setWeatherData (data);
   };
-
+  
   const WeatherBox = ({ data }) => (
     <div className="text-center">
       <div className="card" style={{"width" : "18rem"}}>
@@ -40,9 +38,7 @@ function App() {
           <br></br>
       </div>
     </div>
-    
   );
-
   const weatherBoxes = weatherData.map((data, index) => <WeatherBox key={index} data={data} />);
 
   const activarMensajes = async ()=>{
@@ -50,8 +46,8 @@ function App() {
       vapidKey:"BCiaLQ7emLIRMJWXa-WvwtIsG4HeHC7aX7AufvuKB_eLWxZzNOsFI61CHJUCnOgNNIGBtIXKOMyN7yayx0t0MHI"
     }).catch(error => console.log("error al generar el token paps"));
 
-    if(token) console.log("Este es tu token: "+ token);
-    if(!token) console.log("No tienes token paps")
+    if(token) console.log("Token recibido: "+ token);
+    if(!token) console.log("No tienes token")
   }
 
   React.useEffect(()=>{
@@ -104,70 +100,25 @@ function App() {
                 <div className="col-md-7">
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-6 p-2">
-                                <div className="card text-start">
-                                  <img className="card-img-top mx-auto p-2" src="https://i0.wp.com/climaya.com/wp-content/uploads/2019/06/cy-logo-512-512.png?fit=512%2C512&ssl=1" style={{width: "50%"}} alt="Title"/>
-                                  <div className="card-body">
-                                    <h4 className="card-title text-center">Cuidad 1</h4>
-                                    <p className="card-text text-center">Parametros</p>
-                                  </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 p-2">
-                                <div className="card text-start">
-                                  <img className="card-img-top mx-auto p-2" src="https://i0.wp.com/climaya.com/wp-content/uploads/2019/06/cy-logo-512-512.png?fit=512%2C512&ssl=1" style={{width: "50%"}} alt="Title" />
-                                  <div className="card-body">
-                                    <h4 className="card-title text-center">Cuidad 2</h4>
-                                    <p className="card-text text-center">Parametros</p>
-                                  </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 p-2">
-                                <div className="card text-start">
-                                  <img className="card-img-top mx-auto p-2" src="https://i0.wp.com/climaya.com/wp-content/uploads/2019/06/cy-logo-512-512.png?fit=512%2C512&ssl=1" style={{width: "50%"}} alt="Title"/>
-                                  <div className="card-body">
-                                    <h4 className="card-title text-center">Cuidad 3</h4>
-                                    <p className="card-text text-center">Parametros</p>
-                                  </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 p-2">
-                                <div className="card text-start">
-                                  <img className="card-img-top mx-auto p-2" src="https://i0.wp.com/climaya.com/wp-content/uploads/2019/06/cy-logo-512-512.png?fit=512%2C512&ssl=1" style={{width: "50%"}} alt="Title"/>
-                                  <div className="card-body">
-                                    <h4 className="card-title text-center">Cuidad 4</h4>
-                                    <p className="card-text text-center">Parametros</p>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md-5">
-                    <div className="card">
+                           
+                        <div className="col-md-5">
+                          <div className="card">
                         <img className="card-img-top p-2 mx-auto" src="https://i0.wp.com/climaya.com/wp-content/uploads/2019/06/cy-logo-512-512.png?fit=512%2C512&ssl=1" style={{width: "50%"}} alt="Title"/>
-                        <div className="card-body">
-                            <h4 className="card-title text-center">Cuidad 5</h4>
-                            <p className="card-text text-center">Parametros</p>
-                        </div>
-                    </div>
                     <br/>
-                    <a type="button" className="btn btn-primary d-block mx-auto ">Obtener Diferentes</a>
-                </div>
-
-
-              //botoon 
-                <div>
-                    <button onClick={getWeatherData} type="button" className="btn btn-primary d-block mx-auto">Obtener Climas</button>
-                    {weatherBoxes}
                   </div>
 
-            
+                    <div>
+                        <button onClick={getWeatherData} type="button" className="btn btn-primary d-block mx-auto">Obtener Climas</button>
+                        {weatherBoxes}
+                      </div>
+                </div>    
+              </div>
             </div>
+          </div>
+        </div>
 
     </div>
     </div>
-
 </body>
 
     </div>
